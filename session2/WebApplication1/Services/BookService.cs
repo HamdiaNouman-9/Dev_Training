@@ -26,16 +26,10 @@ namespace WebApplication1.Services
 
         public async Task UpdateAsync(Book book)
         {
-            for (int i = 0; i < InMemoryStore.Books.Count; i++)
-            {
-                if (InMemoryStore.Books[i].Id == book.Id)
-                {
-                    InMemoryStore.Books[i] = book;
-                    break;
-                }
-            }
-            await Task.CompletedTask;
-        }
+         var index = InMemoryStore.Books.FindIndex(b => b.Id == book.Id);
+         if (index != -1)
+           InMemoryStore.Books[index] = book;
+         await Task.CompletedTask;}
 
         public async Task DeleteAsync(int id)
         {
