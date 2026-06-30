@@ -1,0 +1,13 @@
+<li class="task-item">
+  <input
+    type="checkbox"
+    [checked]="task.completed"
+    (change)="onToggleClick()"
+  />
+  <span class="task-details">
+    <strong>#{{ task.id }}</strong>
+    {{ task.title }}
+    [{{ task.priority }}]
+    — {{ task.completed ? 'Done' : 'Pending' }}
+  </span>
+</li>

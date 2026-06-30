@@ -1,0 +1,42 @@
+<section class="add-task">
+  <input
+    type="text"
+    [(ngModel)]="newTaskTitle"
+    placeholder="New task title"
+  />
+
+  <select [(ngModel)]="newTaskPriority">
+    <option value="low">Low</option>
+    <option value="medium">Medium</option>
+    <option value="high">High</option>
+  </select>
+
+  <button (click)="addTask()">Add Task</button>
+</section>
+
+<section class="task-list">
+  @if (tasks.length) {
+    <ul>
+      @for (t of tasks; track t.id) {
+        <app-task-item [task]="t" (toggle)="onToggle($event)"></app-task-item>
+      }
+    </ul>
+  } @else {
+    <p>No tasks available</p>
+  }
+</section>
+
+<!--
+  Task 3 (superseded by Task 4 above):
+  @if (tasks.length) {
+    @for (t of tasks; track t.id) {
+      @if (t.completed) {
+        <li>{{ 'Task ' + t.id + ' completed' }}</li>
+      } @else {
+        <li>{{ 'Task ' + t.id + ' not completed' }}</li>
+      }
+    }
+  } @else {
+    <p>No tasks available</p>
+  }
+-->
